@@ -262,7 +262,7 @@ namespace FBConnectionsTracing
                 DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
                 TimeSpan elapsedTime = DateTime.UtcNow - epoch;
                 mainRegKey.SetValue("InstalledDate", (long)elapsedTime.TotalDays, RegistryValueKind.QWord);
-               // this.InstalledDate = (long)elapsedTime.TotalDays;
+               this.InstalledDate = (long)elapsedTime.TotalDays;
             }
 
             this.LicenseKey = string.Empty;
