@@ -23,7 +23,7 @@ namespace FBConnectionsTracing
         private string FollowerFile { get; set; }
         private bool IncludeFollowed { get; set; }
         private bool HighlightNonFollowers { get; set; }
-
+        private long DeveloperKeyRepeatCount { get; set; }
 
         public MainForm()
         {
@@ -523,6 +523,8 @@ namespace FBConnectionsTracing
             }
             writer.Write("</table>");
             writer.Close();
+
+            MessageBox.Show("Xuất ra tệp tin thành công!", "Hoàn thành", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void copyNameContextMenuItem_Click(object sender, EventArgs e)
@@ -593,6 +595,63 @@ namespace FBConnectionsTracing
         private void lvReport_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             e.DrawDefault = true;
+        }
+
+        private void MainForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.D)
+            {
+                if (!timerKeyRepeat.Enabled)
+                {
+                    timerKeyRepeat.Enabled = true;
+                    timerKeyRepeat.Start();
+                }
+                else
+                {
+                    timerKeyRepeat.Stop();
+                    timerKeyRepeat.Start();
+                }
+
+                this.DeveloperKeyRepeatCount++;
+
+                //this.Text = string.Format("{0}", this.DeveloperKeyRepeatCount);
+                if (this.DeveloperKeyRepeatCount >= 5)
+                {
+                    this.DeveloperKeyRepeatCount = 0;
+                    timerKeyRepeat.Enabled = false;
+                    RegisterForm frm = new RegisterForm();
+                    frm.RequestKey = LicenseManager.Instance.GetMachineUniqueIndentifier(true);
+                    frm.DeveloperMode = true;
+                    frm.ShowInTaskbar = false;
+                    frm.ShowDialog();
+                }
+            }
+        }
+
+        private void timerKeyRepeat_Tick(object sender, EventArgs e)
+        {
+            this.DeveloperKeyRepeatCount = 0;
+            timerKeyRepeat.Enabled = false;
+        }
+
+        private void openAboutVideo_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process proc2 = System.Diagnostics.Process.Start("https://www.facebook.com/share/r/1BBsXT1hvN/");
+        }
+
+        private void openFacebookLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process proc1 = System.Diagnostics.Process.Start("https://www.facebook.com/dotinhoc198/");
+        }
+
+        private void openTiktokLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process proc1 = System.Diagnostics.Process.Start("https://www.tiktok.com/@dotinhoc198");
+        }
+
+        private void openYoutubeLink_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process proc1 = System.Diagnostics.Process.Start("https://www.youtube.com/@dotinhoc198");
         }
     }
 }

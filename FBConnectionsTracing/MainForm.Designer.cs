@@ -52,6 +52,12 @@
             this.btnReport = new System.Windows.Forms.Button();
             this.btnExportList = new System.Windows.Forms.Button();
             this.bgw = new System.ComponentModel.BackgroundWorker();
+            this.timerKeyRepeat = new System.Windows.Forms.Timer(this.components);
+            this.MainMenu = new System.Windows.Forms.MenuStrip();
+            this.đôTinHọcToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFacebookLink = new System.Windows.Forms.ToolStripMenuItem();
+            this.openTiktokLink = new System.Windows.Forms.ToolStripMenuItem();
+            this.openYoutubeLink = new System.Windows.Forms.ToolStripMenuItem();
             this.lvReport = new FBConnectionsTracing.OwnerDrawListView();
             this.colNb = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -59,6 +65,7 @@
             this.grpOptions.SuspendLayout();
             this.ListViewContextMenu.SuspendLayout();
             this.StatusBar.SuspendLayout();
+            this.MainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblFollowed
@@ -283,6 +290,52 @@
             this.bgw.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgw_ProgressChanged);
             this.bgw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgw_RunWorkerCompleted);
             // 
+            // timerKeyRepeat
+            // 
+            this.timerKeyRepeat.Interval = 300;
+            this.timerKeyRepeat.Tick += new System.EventHandler(this.timerKeyRepeat_Tick);
+            // 
+            // MainMenu
+            // 
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.đôTinHọcToolStripMenuItem});
+            this.MainMenu.Location = new System.Drawing.Point(0, 0);
+            this.MainMenu.Name = "MainMenu";
+            this.MainMenu.Size = new System.Drawing.Size(1031, 24);
+            this.MainMenu.TabIndex = 12;
+            this.MainMenu.Text = "menuStrip1";
+            // 
+            // đôTinHọcToolStripMenuItem
+            // 
+            this.đôTinHọcToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openFacebookLink,
+            this.openTiktokLink,
+            this.openYoutubeLink});
+            this.đôTinHọcToolStripMenuItem.Name = "đôTinHọcToolStripMenuItem";
+            this.đôTinHọcToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
+            this.đôTinHọcToolStripMenuItem.Text = "Đô Tin Học";
+            // 
+            // openFacebookLink
+            // 
+            this.openFacebookLink.Name = "openFacebookLink";
+            this.openFacebookLink.Size = new System.Drawing.Size(176, 22);
+            this.openFacebookLink.Text = "Xem trên Facebook";
+            this.openFacebookLink.Click += new System.EventHandler(this.openFacebookLink_Click);
+            // 
+            // openTiktokLink
+            // 
+            this.openTiktokLink.Name = "openTiktokLink";
+            this.openTiktokLink.Size = new System.Drawing.Size(176, 22);
+            this.openTiktokLink.Text = "Xem trên Tiktok";
+            this.openTiktokLink.Click += new System.EventHandler(this.openTiktokLink_Click);
+            // 
+            // openYoutubeLink
+            // 
+            this.openYoutubeLink.Name = "openYoutubeLink";
+            this.openYoutubeLink.Size = new System.Drawing.Size(176, 22);
+            this.openYoutubeLink.Text = "Xem trên Youtube";
+            this.openYoutubeLink.Click += new System.EventHandler(this.openYoutubeLink_Click);
+            // 
             // lvReport
             // 
             this.lvReport.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -331,6 +384,7 @@
             this.Controls.Add(this.btnReport);
             this.Controls.Add(this.lblList);
             this.Controls.Add(this.StatusBar);
+            this.Controls.Add(this.MainMenu);
             this.Controls.Add(this.lvReport);
             this.Controls.Add(this.grpOptions);
             this.Controls.Add(this.btnMyFollowersBrowse);
@@ -341,16 +395,21 @@
             this.Controls.Add(this.lblFollowed);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.MainMenuStrip = this.MainMenu;
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyUp);
             this.grpOptions.ResumeLayout(false);
             this.grpOptions.PerformLayout();
             this.ListViewContextMenu.ResumeLayout(false);
             this.StatusBar.ResumeLayout(false);
             this.StatusBar.PerformLayout();
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,6 +443,12 @@
         private System.ComponentModel.BackgroundWorker bgw;
         private System.Windows.Forms.ContextMenuStrip ListViewContextMenu;
         private System.Windows.Forms.ToolStripMenuItem copyNameContextMenuItem;
+        private System.Windows.Forms.Timer timerKeyRepeat;
+        private System.Windows.Forms.MenuStrip MainMenu;
+        private System.Windows.Forms.ToolStripMenuItem đôTinHọcToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFacebookLink;
+        private System.Windows.Forms.ToolStripMenuItem openTiktokLink;
+        private System.Windows.Forms.ToolStripMenuItem openYoutubeLink;
     }
 }
 

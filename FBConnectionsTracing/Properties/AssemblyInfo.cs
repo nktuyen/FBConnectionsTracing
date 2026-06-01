@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("FBConnectionsTracing")]
 [assembly: AssemblyDescription("Công cụ báo cáo danh sách những người không theo dõi mình trên Facebook")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Đô Tin Học")]
+[assembly: AssemblyCompany("NKTUYEN")]
 [assembly: AssemblyProduct("FBConnectionsTracing")]
-[assembly: AssemblyCopyright("Copyright ©  2026")]
+[assembly: AssemblyCopyright("Copyright ©  2026 - Đô Tin Học(dotinhoc198)")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
